@@ -129,6 +129,12 @@ blockchain = Blockchain()
 print(blockchain.chain)
 print(blockchain.hash(blockchain.last_block))
 
+@app.after_request
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
+
 @app.route('/transaction/new', methods=['POST'])
 def recieve_new_transaction():
     '''
