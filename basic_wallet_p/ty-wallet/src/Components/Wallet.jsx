@@ -18,13 +18,19 @@ const Wallet = () => {
             })
     }, []);
 
-    function increment() {
-        setBalance(balance + 1)
+    const balanceTotal = (recipient) => {
+        if(recipient === 'AmazingLippe' ){
+            setBalance(+1)
+        } else {
+            setBalance(-1)
+        }
     }
+
+    balanceTotal(transaction.recipient)
 
     return(
         <div>
-            <h1 onClick={increment}>Balance: {balance}</h1>
+            <h1>Balance: {balance}</h1>
             <h1>Transactions:</h1>
             {transaction.map(tran => {
                 return(
